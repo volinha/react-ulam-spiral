@@ -5,7 +5,8 @@ function App() {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
-  let stepSize = 25;
+  let stepSize = 10;
+  let dotSize = 3;
   let numSteps = 1;
   let state = 0;
   let turnCounter = 0;
@@ -33,8 +34,8 @@ function App() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    canvas.width = window.innerWidth * 2.125;
-    canvas.height = window.innerHeight * 2.125;
+    canvas.width = window.innerWidth * 2;
+    canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
 
@@ -47,7 +48,7 @@ function App() {
     for (let step = 1; step <= totalSteps; step++) {
       if(step > 1 && isPrime(step)){
       context.beginPath();
-      context.arc(x, y, 5, 0 * Math.PI, 2 * Math.PI);
+      context.arc(x, y, dotSize, 0 * Math.PI, 2 * Math.PI);
       context.stroke();
       context.fill();
       context.closePath();
